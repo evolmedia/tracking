@@ -6,7 +6,6 @@ services:
     network_mode: host
     environment:
       SERVICES: 'mqtt,ble,console'
-      ROOM: %%BALENA_MACHINE_NAME%%
       AUTO_DISCOVERY: true
       MQTT_URL: 'mqtt://192.168.1.200'
       MQTT_REJECT_UNAUTHORIZED: true
