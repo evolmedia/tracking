@@ -5,5 +5,8 @@ services:
     restart: always
     network_mode: host
     environment:
-      SERVICES: 'ble,console'
+      SERVICES: 'mqtt,ble,console'
       ROOM: 'docker-room'
+      AUTO_DISCOVERY: true
+      MQTT_URL: 'mqtt://192.168.1.200'
+      MQTT_REJECT_UNAUTHORIZED: true
