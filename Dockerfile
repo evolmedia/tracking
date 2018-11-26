@@ -1,17 +1,12 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM arm32v6/node:8-alpine
 
-ENV LANG C.UTF-8
+COPY qemu-arm-static /usr/bin/qemu-arm-static
 
-ARG BUILD_ARCH
-ARG BUILD_DATE
-ARG BUILD_REF
-ARG BUILD_VERSION
-
-RUN apk add --no-cache nodejs nodejs-npm python git make g++ bluez libusb libusb-dev
+RUN apk add --no-cache python git make g++ bluez libusb libusb-dev
 
 COPY . /room-assistant
 WORKDIR /room-assistant
-RUN npm install --production && ln -s /data/options.json config/local.json
 
-CMD [ "/usr/bin/npm", "start" ]
+RUN npm install --production
+
+CMD [ "npm", "start" ]
