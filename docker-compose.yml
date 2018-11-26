@@ -1,0 +1,9 @@
+version: '2'
+services:
+  room-assistant:
+    image: mkerix/room-assistant:latest-arm32
+    restart: always
+    network_mode: host
+    environment:
+      SERVICES: 'ble,console'
+      ROOM: 'docker-room'
